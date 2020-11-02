@@ -202,7 +202,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 StyleableToast.makeText(getApplicationContext(), "از اپلیکیشن خودتون حمایت کنید", Toast.LENGTH_LONG, R.style.toastTheme).show();
                 break;
             case R.id.nav_recentUpdates:
-                StyleableToast.makeText(getApplicationContext(), "هنوز برنامه بروز نشده است!", Toast.LENGTH_LONG, R.style.toastTheme).show();
+                showRecentUpdate();
                 break;
             case R.id.nav_aboutUs:
                 showAboutDialog();
@@ -265,18 +265,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Button mailButton = dialog.findViewById(R.id.mail);
         callButton.setOnClickListener(v ->
         {
-            Uri number = Uri.parse("tel:+989129570184");
-            Intent intent = new Intent(Intent.ACTION_DIAL, number);
-            if (intent.resolveActivity(getPackageManager()) != null)
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://t.me/ArtimanM"));
+            try
             {
                 startActivity(intent);
+            }
+            catch (android.content.ActivityNotFoundException ex)
+            {
+                StyleableToast.makeText(getApplicationContext(), "هیچ کلاینتی  پیدا نشد",
+                        Toast.LENGTH_SHORT, R.style.toastTheme).show();
             }
         });
         mailButton.setOnClickListener(v ->
         {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("message/rfc822");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"Hosseini.h8680@yahoo.com"});
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"farough.ghaderi@yahoo.com"});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "گزارش مشکلات و ارتباط با ما");
             emailIntent.putExtra(Intent.EXTRA_TEXT, "");
             try
@@ -296,6 +301,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void showAboutDialog()
     {
         dialog.setContentView(R.layout.custom_dialog);
+        ImageView closeDialog = dialog.findViewById(R.id.close_dialog);
+        closeDialog.setOnClickListener(v ->
+                dialog.dismiss());
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    //show recent updates ...
+    private void showRecentUpdate()
+    {
+        dialog.setContentView(R.layout.custom_dialog_update);
         ImageView closeDialog = dialog.findViewById(R.id.close_dialog);
         closeDialog.setOnClickListener(v ->
                 dialog.dismiss());
@@ -359,17 +375,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         catch (Exception e)
         {
-            String message = "لینک مستقیم دانلود برنامه:" + "\n" + "https://8upload.ir/uploads/f357829025.apk";
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_TEXT, message);
-            intent.setType("text/plain");
-
-            Intent chooser = Intent.createChooser(intent, "به اشتراک گذاری از طریق:");
-            if (intent.resolveActivity(getPackageManager()) != null)
-            {
-                startActivity(chooser);
-            }
-            e.printStackTrace();
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://myket.ir/artiman-app"));
+            startActivity(intent);
         }
     }
 

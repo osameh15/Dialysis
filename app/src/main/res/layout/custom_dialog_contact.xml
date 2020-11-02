@@ -60,7 +60,6 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
-                    android:textAlignment="center"
                     android:textColor="@color/colorText"
                     android:text="@string/contact_name"
                     android:fontFamily="@font/vazir"
@@ -73,9 +72,11 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/button_shape"
-                    android:text="@string/phone_number"
+                    android:textColor="@color/colorAccentDark"
+                    android:textStyle="bold"
+                    android:text="@string/telegram_id"
                     android:textSize="16sp"
-                    android:fontFamily="@font/vazir_bold"/>
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/mail"
@@ -85,8 +86,9 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/button_shape"
                     android:text="@string/mail"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/vazir_bold"/>
+                    android:textSize="16sp"
+                    android:fontFamily="@font/vazir_bold"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 

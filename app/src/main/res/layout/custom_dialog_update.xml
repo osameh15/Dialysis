@@ -8,10 +8,10 @@
     android:layout_margin="10dp">
 
     <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardBackgroundColor="@android:color/darker_gray">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardBackgroundColor="@android:color/secondary_text_dark">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,17 +42,18 @@
                     android:textAlignment="center"
                     android:textStyle="bold"
                     android:textColor="@color/colorText"
-                    android:text="@string/about_us"
+                    android:text="@string/recent_updates"
                     android:fontFamily="@font/vazir_bold"
                     android:textSize="16sp"/>
 
-                <ImageView
+                <com.airbnb.lottie.LottieAnimationView
                     android:contentDescription="@string/app_name"
-                    android:layout_width="104dp"
-                    android:layout_height="104dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/logo"/>
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_fileName="update.json"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -61,25 +62,14 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/colorText"
-                    android:text="@string/info_app"
+                    android:text="@string/update"
                     android:fontFamily="@font/vazir"
                     android:textSize="12sp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/colorAccentDark"
-                    android:text="@string/developer"
-                    android:fontFamily="@font/vazir_bold"
-                    android:textSize="13sp"/>
 
             </LinearLayout>
 
         </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
