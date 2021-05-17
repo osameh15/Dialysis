@@ -16,8 +16,6 @@ import ir.dyalysis.dialysis.R;
 
 public class MainActivity extends AppCompatActivity
 {
-    //variables
-    private static int TIME_SPLASH = 2000;
     ScaleAnimation scaleAnimation;
     ImageView imageView;
     @Override
@@ -40,6 +38,8 @@ public class MainActivity extends AppCompatActivity
         imageView.setAnimation(scaleAnimation);
 
         //Set Timer to go to next activity
+        //variables
+        int TIME_SPLASH = 2000;
         new Handler().postDelayed(() ->
         {
             Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
